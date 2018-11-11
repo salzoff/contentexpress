@@ -1,0 +1,63 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/root.json",
+    "type": "object",
+    "title": "Hotel request",
+    "properties": {
+        "lang": {
+            "$id": "#/properties/lang",
+            "type": "string",
+            "title": "The Lang Schema",
+            "default": "de",
+            "pattern": "^[a-zA-Z]{2}$"
+        },
+        "vc": {
+            "$id": "#/properties/vc",
+            "type": "string",
+            "title": "Tour operator code"
+        },
+        "oc": {
+            "$id": "#/properties/vc",
+            "type": "string",
+            "title": "Booking code"
+        },
+        "gid": {
+            "$id": "#/properties/gid",
+            "type": "integer",
+            "title": "Giata Id"
+        },
+        "vid": {
+            "$id": "#/properties/vid",
+            "type": "integer",
+            "title": "Tour operator Id"
+        },
+        "katid": {
+            "$id": "#/properties/vid",
+            "type": "integer",
+            "title": "Catalog Id"
+        },
+        "date": {
+            "$id": "#/properties/date",
+            "type": "string",
+            "title": "Date",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "khid": {
+            "$id": "#/properties/khid",
+            "type": "integer",
+            "title": "Catalog hotel Id"
+        },
+        "show": {
+            "$id": "#/properties/date",
+            "type": "string",
+            "title": "List of information to display"
+        },
+        "st": {
+            "$id": "#/properties/st",
+            "type": "string",
+            "title": "Season",
+            "pattern": "^[jsw]{1}$"
+        }
+    }
+}

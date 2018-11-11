@@ -1,0 +1,50 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/root.json",
+    "type": "object",
+    "title": "List request",
+    "required": [
+        "list"
+    ],
+    "properties": {
+        "list": {
+            "$id": "#/properties/list",
+            "type": "string",
+            "title": "Type of list",
+            "default": "",
+            "enum": [
+                "country", "destination", "city", "provider", "catalog", "language", "geocode", "climate", "giataid", "specialid", "address"
+            ]
+        },
+        "lang": {
+            "$id": "#/properties/lang",
+            "type": "string",
+            "title": "The Lang Schema",
+            "default": "de",
+            "pattern": "^[a-zA-Z]{2}$"
+        },
+        "lc": {
+            "$id": "#/properties/lc",
+            "type": "string",
+            "title": "Country code",
+            "pattern": "^[a-zA-Z]{2}$"
+        },
+        "zi": {
+            "$id": "#/properties/zi",
+            "type": "string",
+            "title": "Destination Id"
+        },
+        "si": {
+            "$id": "#/properties/si",
+            "type": "string",
+            "title": "Destination Id"
+        },
+        "vc": {
+            "$id": "#/properties/vc",
+            "type": "string",
+            "title": "Veranstaltercode"
+        }
+    }
+
+}

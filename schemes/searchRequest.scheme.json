@@ -1,0 +1,109 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/root.json",
+    "type": "object",
+    "title": "Search request",
+    "properties": {
+        "lang": {
+            "$id": "#/properties/lang",
+            "type": "string",
+            "title": "The Lang Schema",
+            "default": "de",
+            "pattern": "^[a-zA-Z]{2}$"
+        },
+        "lc": {
+            "$id": "#/properties/lc",
+            "type": "string",
+            "title": "Country code",
+            "pattern": "^[a-zA-Z]{2}$"
+        },
+        "ln": {
+            "$id": "#/properties/ln",
+            "type": "string",
+            "title": "Country name"
+        },
+        "zi": {
+            "$id": "#/properties/zi",
+            "type": "integer",
+            "title": "Destination Id"
+        },
+        "zn": {
+            "$id": "#/properties/zn",
+            "type": "string",
+            "title": "Destination Name"
+        },
+        "si": {
+            "$id": "#/properties/si",
+            "type": "integer",
+            "title": "City Id"
+        },
+        "sn": {
+            "$id": "#/properties/sn",
+            "type": "string",
+            "title": "City Name"
+        },
+        "vc": {
+            "$id": "#/properties/vc",
+            "type": "string",
+            "title": "Tour operator code"
+        },
+        "oc": {
+            "$id": "#/properties/vc",
+            "type": "string",
+            "title": "Booking code"
+        },
+        "gid": {
+            "$id": "#/properties/gid",
+            "type": "integer",
+            "title": "Giata Id"
+        },
+        "vid": {
+            "$id": "#/properties/vid",
+            "type": "integer",
+            "title": "Tour operator Id"
+        },
+        "katid": {
+            "$id": "#/properties/vid",
+            "type": "integer",
+            "title": "Catalog Id"
+        },
+        "hn": {
+            "$id": "#/properties/hn",
+            "type": "string",
+            "title": "Hotel name"
+        },
+        "hnt": {
+            "$id": "#/properties/hnt",
+            "type": "string",
+            "title": "Hotel name indexed"
+        },
+        "hkat": {
+            "$id": "#/properties/hkat",
+            "type": "number",
+            "title": "Hotel categorymin"
+        },
+        "date": {
+            "$id": "#/properties/date",
+            "type": "string",
+            "title": "Date",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "khid": {
+            "$id": "#/properties/khid",
+            "type": "integer",
+            "title": "Catalog hotel Id"
+        },
+        "spa": {
+            "$id": "#/properties/khid",
+            "type": "integer",
+            "title": "Page"
+        },
+        "fts": {
+            "$id": "#/properties/fts",
+            "type": "string",
+            "title": "Ful text search"
+        }
+    }
+
+}

@@ -1,8 +1,10 @@
-var express = require('express');
+import express from 'express';
+import router from './routes';
+
 var app = express();
 
-app.get('/', (req, res) => {
-    res.send('Hier');
-});
+app.use('/', router);
 
-app.listen(3000);
+app.listen(3000, () => {
+    console.log('Listen on port 3000');
+});
