@@ -3,8 +3,8 @@ import bodyParser from 'body-parser';
 import { validate } from 'express-jsonschema';
 import GiataService from '../service/GiataService';
 import * as schema from '../schemes/searchRequest.scheme';
-import config from '../config';
-import router from "../routes";
+import config from '../config/index';
+import router from "../routes/index";
 const giataService = new GiataService();
 
 const searchController  = {

@@ -13,11 +13,11 @@ export default class Catalog {
         this.catalogCoverMedium = data.catalog_cover[0].catalog_cover_url[1]._;
         this.catalogCoverLarge = data.catalog_cover[0].catalog_cover_url[2]._;
     }
-    get name() {
+    get hotelname() {
         return this['Name'];
     }
-    set name(name) {
-        this['Name'] = name;
+    set hotelnamename(name) {
+        this['Hotelname'] = hotelname;
     }
     get id() {
         return this['Id'];

@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import { validate } from 'express-jsonschema';
 import GiataService from '../service/GiataService';
 import * as schema from '../schemes/hotelRequest.scheme';
-import config from "../config";
+import config from "../config/index";
 import searchRouter from "./SearchController";
 const giataService = new GiataService();
 

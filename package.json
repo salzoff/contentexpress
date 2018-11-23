@@ -2,10 +2,13 @@
   "name": "contentexpress",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "build/index.js",
+  "files": ["dist"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "babel-watch index.js"
+    "dev": "babel-watch src/index.js",
+    "prod": "node dist/index.js",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -23,13 +26,18 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "express-jsonschema": "^1.1.6",
+    "jsonata": "^1.5.4",
     "moment": "^2.22.2",
+    "xml2js": "^0.4.19",
     "xml2js-parser": "^1.1.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
     "babel-watch": "^2.0.7",
-    "babel-preset-stage-2": "^6.24.1"
+    "webpack": "^4.26.0",
+    "webpack-cli": "^3.1.2"
   }
 }
