@@ -4,6 +4,7 @@ import { validate } from 'express-jsonschema';
 import GiataService from '../service/GiataService';
 import * as schema from '../schemes/searchRequest.scheme';
 import config from '../config';
+import router from "../routes";
 const giataService = new GiataService();
 
 const searchController  = {
@@ -18,10 +19,13 @@ const searchController  = {
 const searchRouter = express.Router();
 searchRouter.use(bodyParser.json());
 searchRouter.use(bodyParser.urlencoded({ extended: true }));
-searchRouter.post('/search', validate({body: schema}), (req, res) => {
-    searchController.getOffers(req.body)
+searchRouter.post('/search', validate({body: schema}), (req, res, next) => {
+   return searchController.getOffers(req.body)
         .then(response => res.json(response))
-        .catch(error => res.status(500).send(error).end())
+        .catch(next);
+});
+searchRouter.post('/search', (req, res, next) => {
+    throw new Error('Error occured during request');
 });
 
 export default searchRouter;

@@ -63,4 +63,5 @@ typings/
 # IDE
 .idea
 
-/config
+src/config/index.js
+dist/*
