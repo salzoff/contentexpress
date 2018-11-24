@@ -64,3 +64,5 @@ typings/
 .idea
 
 src/config/index.js
+dist/*
+!dist/.gitkeep
