@@ -15,6 +15,9 @@
     "type": "git",
     "url": "git+https://github.com/salzoff/contentexpress.git"
   },
+  "bin": {
+      "content-run": "dist/index.js"
+  },
   "author": "",
   "license": "ISC",
   "bugs": {
