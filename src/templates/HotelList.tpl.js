@@ -19,12 +19,22 @@ export default `
             "Fax": Fax[0]
         },
         "Map": Landkarte[0],
-        "TourOperatorLogoSmall": provider_logo[0].provider_logo_url[0].v,
-        "TourOperatorLogoMedium": provider_logo[0].provider_logo_url[1].v,
-        "TourOperatorLogoLarge": provider_logo[0].provider_logo_url[2].v,
-        "TourOperatorLogoXLarge": provider_logo[0].provider_logo_url[3].v,
-        "TourOperatorCode": Veranstaltercode[0],
+        "TourOperatorLogo": $exists(provider_logo)
+            ? provider_logo[0].{
+                "Small": provider_logo_url[0].v,
+                "Medium": provider_logo_url[1].v,
+                "Large": provider_logo_url[2].v,
+                "XLarge": provider_logo_url[3].v
+            }
+            : {
+                "Small": provider_logo_url[size[0]="20"].v,
+                "Medium": provider_logo_url[size[0]="40"].v,
+                "Large": provider_logo_url[size[0]="140"].v,
+                "XLarge": provider_logo_url[size[0]="288"].v
+            }
+        ,"TourOperatorCode": Veranstaltercode[0],
         "TourOperatorId": VeranstalterID[0],
+        "TourOperatorName": Veranstaltername[0],
         "ProductCode": Objectcode[0],
         "Language": Text[0].lang[0],
         "Description": Text[0].v,
@@ -35,12 +45,20 @@ export default `
         "SeasonType": KatalogSaisonTyp[0],
         "TravelType": TravelType[0].v,
         "CatalogCode": KatalogCode[0],
-        "CatalogCodes": KatalogCodes.KatalogCode.[v],
-        "CatalogHotelId": KatalogHotelId[0],
-        "CatalogCoverSmall": catalog_cover[0].catalog_cover_url[0].v,
-        "CatalogCoverMedium": catalog_cover[0].catalog_cover_url[1].v,
-        "CatalogCoverLarge": catalog_cover[0].catalog_cover_url[2].v,
-        "Climate": climate[0].{
+        "CatalogCodes": KatalogCodes[0].KatalogCode.[v],
+        "CatalogHotelId": KataloghotelID[0],
+        "CatalogCover": $exists(catalog_cover) 
+            ? catalog_cover[0].{
+                "Small": catalog_cover_url[0].v,
+                "Medium": catalog_cover_url[1].v,
+                "Large": catalog_cover_url[2].v
+            }
+            : {
+                "Small": catalog_cover_url[size[0]="70"][0].v,
+                "Medium": catalog_cover_url[size[0]="200"][0].v,
+                "Large": catalog_cover_url[size[0]="400"][0].v
+            }
+        ,"Climate": climate[0].{
             "Kind": kind[0],
             "Id": id[0],
             "AverageDayTemperature": $each(day_temperature[0], function($v) {$v}),
@@ -48,8 +66,8 @@ export default `
             "AverageWaterTemperature": $each(water_temperature[0], function($v) {$v}),
             "DaysSunshine": $each(sunshine[0], function($v) {$v}),
             "DaysRain": $each(rainday[0], function($v) {$v})
-        },
-        "Images": {
+        },    
+        "Images": $exists(BildFile) ? {
             "Small": [$filter(Bildfile, function($v, $i) { $v.size[0] = '150' })].{
                 "Type": typ[0],
                 "Width": width[0],
@@ -68,7 +86,7 @@ export default `
                 "Height": height[0],
                 "Url": v
             }
-        }
+        } : null
     }
 `;
 

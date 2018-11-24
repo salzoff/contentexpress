@@ -95,7 +95,7 @@
             "title": "Catalog hotel Id"
         },
         "spa": {
-            "$id": "#/properties/khid",
+            "$id": "#/properties/spa",
             "type": "integer",
             "title": "Page"
         },
@@ -103,6 +103,11 @@
             "$id": "#/properties/fts",
             "type": "string",
             "title": "Ful text search"
+        },
+        "show": {
+            "$id": "#/properties/show",
+            "type": "string",
+            "title": "List of information to display"
         }
     }
 

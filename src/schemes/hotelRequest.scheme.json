@@ -49,7 +49,7 @@
             "title": "Catalog hotel Id"
         },
         "show": {
-            "$id": "#/properties/date",
+            "$id": "#/properties/show",
             "type": "string",
             "title": "List of information to display"
         },
