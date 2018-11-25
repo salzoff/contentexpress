@@ -63,8 +63,9 @@ typings/
 # IDE
 .idea
 
-src/config/index.js
+config/index.js
 dist/*
 !dist/.gitkeep
 model
 scripts
+.env
