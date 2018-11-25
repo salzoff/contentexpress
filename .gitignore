@@ -68,4 +68,4 @@ dist/*
 !dist/.gitkeep
 model
 scripts
-.env
+src/config/local.config.js
