@@ -1,6 +1,6 @@
 {
   "name": "@salzoff/contentexpress",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "",
   "main": "dist/index.js",
   "files": ["dist"],
@@ -15,9 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/salzoff/contentexpress.git"
   },
-  "bin": {
-      "content-run": "./bin/content-run"
-  },
+  {
   "author": "",
   "license": "ISC",
   "bugs": {
