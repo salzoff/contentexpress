@@ -1,6 +1,5 @@
 import querystring from 'querystring';
 import axios from 'axios';
-import config from '../config/index';
 import { parseStringSync, parseString } from 'xml2js';
 import templates from '../templates/index';
 
@@ -8,7 +7,7 @@ import templates from '../templates/index';
 axios.defaults.responseType = 'document';
 let instance;
 export default class GiataService {
-    constructor() {
+    constructor(config) {
         if (instance) {
             return instance;
         }

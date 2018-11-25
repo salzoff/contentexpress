@@ -5,7 +5,7 @@ import GiataService from '../service/GiataService';
 import * as schema from '../schemes/hotelRequest.scheme';
 import config from "../config/index";
 import searchRouter from "./SearchController";
-const giataService = new GiataService();
+const giataService = new GiataService(config);
 
 const hotelController  = {
     getHotel(params) {
