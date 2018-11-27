@@ -50,7 +50,7 @@
         },
         "show": {
             "$id": "#/properties/show",
-            "type": "string",
+            "type": "array",
             "title": "List of information to display"
         },
         "st": {

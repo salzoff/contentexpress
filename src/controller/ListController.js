@@ -1,10 +1,10 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import { validate } from 'express-jsonschema';
-import config from '../config';
 import GiataService from '../service/GiataService';
 import schema from '../schemes/listRequest.scheme';
 import hotelRouter from "./HotelController";
+import config from '../config/index';
 const giataService = new GiataService(config);
 
 const listController  = {

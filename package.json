@@ -3,7 +3,10 @@
   "version": "0.0.14",
   "description": "",
   "main": "dist/index.js",
-  "files": ["dist", "src"],
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "babel-watch src/index.js",
@@ -25,6 +28,7 @@
     "D": "^1.0.0",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "express-jsonschema": "^1.1.6",
     "jsonata": "^1.5.4",

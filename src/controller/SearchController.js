@@ -4,6 +4,7 @@ import { validate } from 'express-jsonschema';
 import GiataService from '../service/GiataService';
 import * as schema from '../schemes/searchRequest.scheme';
 import config from '../config/index';
+import requestTransform from '../helper/requestTransform';
 import router from "../routes/index";
 const giataService = new GiataService(config);
 
@@ -19,6 +20,7 @@ const searchController  = {
 const searchRouter = express.Router();
 searchRouter.use(bodyParser.json());
 searchRouter.use(bodyParser.urlencoded({ extended: true }));
+searchRouter.use(requestTransform);
 searchRouter.post('/search', validate({body: schema}), (req, res, next) => {
    return searchController.getOffers(req.body)
         .then(response => res.json(response))
