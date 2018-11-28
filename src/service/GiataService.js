@@ -60,7 +60,7 @@ export default class GiataService {
         return axios.get(url)
             .then(response => this.getPromisedParserForResponse(response))
             .then(obj => {
-                const parsedResult = templates[`hotelList`].evaluate(obj, {orderBy: '^(GiataId)'});
+                const parsedResult = templates[`hotelList`].evaluate(obj);
                 return parsedResult;
             });
     }
