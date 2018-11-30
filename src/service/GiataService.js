@@ -30,11 +30,13 @@ export default class GiataService {
     getList(params) {
         let url = `${this.baseQueryUrl}sc=list&`;
         url += querystring.stringify(params);
-        console.log(url);
         return axios.get(url)
             .then(response => this.getPromisedParserForResponse(response))
-            .then(obj => {
-                const parsedResult = templates[`${params.list}List`].evaluate(obj);
+            .then((obj, response) => {
+                let parsedResult = templates[`${params.list}List`].evaluate(obj);
+                parsedResult = parsedResult.filter(entry => {
+                    return true;
+                });
                 return parsedResult;
             });
     }
@@ -44,7 +46,7 @@ export default class GiataService {
         url += querystring.stringify(params);
         return axios.get(url)
             .then(response => this.getPromisedParserForResponse(response))
-            .then(obj => {
+            .then((obj, response) => {
                 const parsedResult = templates[`hotelList`].evaluate(obj);
                 return (Object.assign({
                     count: obj.found[0]
@@ -59,7 +61,7 @@ export default class GiataService {
         url += querystring.stringify(params);
         return axios.get(url)
             .then(response => this.getPromisedParserForResponse(response))
-            .then(obj => {
+            .then((obj, response) => {
                 const parsedResult = templates[`hotelList`].evaluate(obj);
                 return parsedResult;
             });
@@ -76,7 +78,7 @@ export default class GiataService {
                 if (err) {
                     reject(err);
                 } else {
-                    resolve(result);
+                    resolve(result, response);
                 }
             });
         });

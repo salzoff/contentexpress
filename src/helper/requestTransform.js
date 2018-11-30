@@ -23,14 +23,24 @@ const keyMapping = {
     catalogCover: 'cv',
     providerLogo: 'vl'
 };
+const postFilterMapping = {
+    katcode: 'CatalogCodes'
+};
+
 export default (req, res, next) => {
     let newBody = Object.assign({}, req.body);
+    let postFilter = {};
     Object.keys(newBody).forEach(key => {
         if (keyMapping[key]) {
             newBody[keyMapping[key]] = newBody[key];
             delete newBody[key];
         }
+        if (postFilterMapping[key]) {
+            postFilter[postFilterMapping[key]] = newBody[key];
+            delete newBody[key];
+        }
     });
+    req.postFilter = postFilter;
     req.body = newBody;
     next();
 };

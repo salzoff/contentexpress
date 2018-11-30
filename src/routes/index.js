@@ -17,14 +17,12 @@ router.use((err, req, res, next) => {
         res.status(404).send('Route not found');
     }
     if (err.name === 'JsonSchemaValidation') {
-        console.log(err);
         res.status(400).json(err.validations.body);
     } else {
         next(err);
     }
 });
 router.use((err, req, res, next) => {
-    console.log(err);
     res.status(500).send(err.message);
 });
 export default router;

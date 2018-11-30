@@ -9,11 +9,28 @@ import router from "../routes/index";
 const giataService = new GiataService(config);
 
 const searchController  = {
-    getOffers(params) {
+    getOffers(params, postFilter) {
         if (!params.show) {
             params.show = config.defaultSearchShow;
         }
-        return giataService.getOffers(params);
+        return giataService.getOffers(params, postFilter)
+            .then(offers => {
+                return new Promise((resolve, reject) => {
+                    if (offers.count === 0 || Object.keys(postFilter). length === 0) {
+                        return resolve(offers);
+                    }
+                    Object.keys(postFilter).forEach(key => {
+                        if (!offers.items[0][key]) {
+                            return;
+                        }
+                        offers.items = offers.items.filter(offer => {
+                            return offer[key].indexOf(postFilter[key]) > -1;
+                        });
+                    });
+                    offers.count = offers.items.length;
+                    resolve(offers);
+                });
+            });
     }
 };
 
@@ -22,7 +39,7 @@ searchRouter.use(bodyParser.json());
 searchRouter.use(bodyParser.urlencoded({ extended: true }));
 searchRouter.use(requestTransform);
 searchRouter.post('/search', validate({body: schema}), (req, res, next) => {
-   return searchController.getOffers(req.body)
+   return searchController.getOffers(req.body, req.postFilter)
         .then(response => res.json(response))
         .catch(next);
 });

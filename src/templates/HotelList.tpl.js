@@ -45,7 +45,7 @@ export default `
         "SeasonType": KatalogSaisonTyp[0],
         "TravelType": TravelType[0].v,
         "CatalogCode": KatalogCode[0],
-        "CatalogCodes": KatalogCodes[0].KatalogCode.[v],
+        "CatalogCodes": KatalogCodes.[*].v,
         "CatalogHotelId": KataloghotelID[0],
         "CatalogCover": $exists(catalog_cover) 
             ? catalog_cover[0].{
@@ -67,7 +67,7 @@ export default `
             "DaysSunshine": $each(sunshine[0], function($v) {$v}),
             "DaysRain": $each(rainday[0], function($v) {$v})
         },    
-        "Images": $exists(BildFile) ? {
+        "Images": $exists(Bildfile) ? {
             "Small": [$filter(Bildfile, function($v, $i) { $v.size[0] = '150' })].{
                 "Type": typ[0],
                 "Width": width[0],
