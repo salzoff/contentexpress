@@ -6,6 +6,8 @@ import * as schema from '../schemes/searchRequest.scheme';
 import config from '../config/index';
 import requestTransform from '../helper/requestTransform';
 import router from "../routes/index";
+import { cacheMiddleware, doCache } from '../helper/cache';
+import hotelRouter from "./HotelController";
 const giataService = new GiataService(config);
 
 const searchController  = {
@@ -16,20 +18,26 @@ const searchController  = {
         return giataService.getOffers(params, postFilter)
             .then(offers => {
                 return new Promise((resolve, reject) => {
-                    if (offers.count === 0 || Object.keys(postFilter). length === 0) {
+                    if (offers.count === 0 || Object.keys(postFilter).length === 0) {
                         return resolve(offers);
                     }
-                    Object.keys(postFilter).forEach(key => {
+                    for (let key of Object.keys(postFilter)) {
+                        if (offers.items.length === 0) {
+                            break;
+                        }
                         if (!offers.items[0][key]) {
-                            return;
+                            continue;
                         }
                         offers.items = offers.items.filter(offer => {
                             return offer[key].indexOf(postFilter[key]) > -1;
                         });
-                    });
+                    }
                     offers.count = offers.items.length;
                     resolve(offers);
                 });
+            })
+            .catch(e => {
+                console.log(e);
             });
     }
 };
@@ -38,8 +46,13 @@ const searchRouter = express.Router();
 searchRouter.use(bodyParser.json());
 searchRouter.use(bodyParser.urlencoded({ extended: true }));
 searchRouter.use(requestTransform);
+searchRouter.use(cacheMiddleware);
 searchRouter.post('/search', validate({body: schema}), (req, res, next) => {
    return searchController.getOffers(req.body, req.postFilter)
+       .then(response => {
+           doCache(req.body, response);
+           return Promise.resolve(response);
+       })
         .then(response => res.json(response))
         .catch(next);
 });

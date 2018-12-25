@@ -35,9 +35,11 @@ export default (req, res, next) => {
             newBody[keyMapping[key]] = newBody[key];
             delete newBody[key];
         }
-        if (postFilterMapping[key]) {
+        if (postFilterMapping[key] || postFilterMapping[keyMapping[key]]) {
             postFilter[postFilterMapping[key]] = newBody[key];
-            delete newBody[key];
+            if (keyMapping[key]) {
+                delete newBody[keyMapping[key]];
+            }
         }
     });
     req.postFilter = postFilter;

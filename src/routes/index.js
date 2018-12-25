@@ -2,6 +2,7 @@ import express from 'express';
 import listRouter from '../controller/ListController';
 import searchRouter from '../controller/SearchController';
 import hotelRouter from '../controller/HotelController';
+import { clearCache } from '../helper/cache';
 
 const router = express.Router();
 
@@ -10,6 +11,10 @@ router.use('/', searchRouter);
 router.use('/', hotelRouter);
 router.post('*', (req, res, next) => {
     throw new Error('NotFound');
+});
+router.delete('/cache', (req, res, next) => {
+    clearCache();
+    res.json({ Status: 'ok' });
 });
 
 router.use((err, req, res, next) => {

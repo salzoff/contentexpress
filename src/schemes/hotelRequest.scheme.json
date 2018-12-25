@@ -49,9 +49,18 @@
             "title": "Catalog hotel Id"
         },
         "show": {
-            "$id": "#/properties/show",
-            "type": "array",
-            "title": "List of information to display"
+            "anyOf": [
+                {
+                    "$id": "#/properties/show",
+                    "type": "array",
+                    "title": "List of information to display"
+                },
+                {
+                    "$id": "#/properties/show",
+                    "type": "string",
+                    "title": "List of information to display"
+                }
+            ]
         },
         "st": {
             "$id": "#/properties/st",

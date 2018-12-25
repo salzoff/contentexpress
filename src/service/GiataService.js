@@ -44,6 +44,7 @@ export default class GiataService {
     getOffers(params) {
         let url = `${this.baseQueryUrl}sc=search&`;
         url += querystring.stringify(params);
+        console.log(url);
         return axios.get(url)
             .then(response => this.getPromisedParserForResponse(response))
             .then((obj, response) => {
@@ -59,6 +60,7 @@ export default class GiataService {
     getHotel(params) {
         let url = `${this.baseQueryUrl}sc=hotel&`;
         url += querystring.stringify(params);
+        console.log(url);
         return axios.get(url)
             .then(response => this.getPromisedParserForResponse(response))
             .then((obj, response) => {

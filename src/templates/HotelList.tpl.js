@@ -1,5 +1,5 @@
 export default `
-    data.{
+    $append([], data.{
         "HotelName": Hotelname[0],
         "GiataId": GiataID[0].v,
         "Category": Hotelkategorie[0],
@@ -87,6 +87,6 @@ export default `
                 "Url": v
             }
         } : null
-    }
+    })
 `;
 
