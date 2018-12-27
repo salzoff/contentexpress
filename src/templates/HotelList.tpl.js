@@ -44,7 +44,7 @@ export default `
         "EndDate": dateend[0],
         "SeasonType": KatalogSaisonTyp[0],
         "TravelType": TravelType[0].v,
-        "CatalogCode": KatalogCode[0],
+        "CatalogCode": KatalogCode[0].v,
         "CatalogCodes": KatalogCodes.[*].v,
         "CatalogHotelId": KataloghotelID[0],
         "CatalogCover": $exists(catalog_cover) 
