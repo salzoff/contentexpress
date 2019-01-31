@@ -2,6 +2,7 @@ import express from 'express';
 import listRouter from '../controller/ListController';
 import searchRouter from '../controller/SearchController';
 import hotelRouter from '../controller/HotelController';
+import logoRouter from '../controller/LogoController';
 import { clearCache } from '../helper/cache';
 
 const router = express.Router();
@@ -9,6 +10,7 @@ const router = express.Router();
 router.use('/', listRouter);
 router.use('/', searchRouter);
 router.use('/', hotelRouter);
+router.use('/', logoRouter);
 router.post('*', (req, res, next) => {
     throw new Error('NotFound');
 });

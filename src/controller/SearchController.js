@@ -6,7 +6,7 @@ import * as schema from '../schemes/searchRequest.scheme';
 import config from '../config/index';
 import requestTransform from '../helper/requestTransform';
 import router from "../routes/index";
-import { cacheMiddleware, doCache } from '../helper/cache';
+import {cacheLogos, cacheMiddleware, doCache} from '../helper/cache';
 import hotelRouter from "./HotelController";
 const giataService = new GiataService(config);
 

@@ -1,10 +1,12 @@
 import querystring from 'querystring';
 import axios from 'axios';
+import utf8 from 'utf8';
 import { parseStringSync, parseString } from 'xml2js';
 import templates from '../templates/index';
 
 
 axios.defaults.responseType = 'document';
+axios.defaults.responseEncoding = 'ISO-8859-1';
 let instance;
 export default class GiataService {
     constructor(config) {
@@ -61,7 +63,12 @@ export default class GiataService {
         let url = `${this.baseQueryUrl}sc=hotel&`;
         url += querystring.stringify(params);
         console.log(url);
-        return axios.get(url)
+        return axios.get(url, {
+            transformResponse: [function (data) {
+                // Do whatever you want to transform the data
+                return utf8.encode(data);
+            }],
+        })
             .then(response => this.getPromisedParserForResponse(response))
             .then((obj, response) => {
                 const parsedResult = templates[`hotelList`].evaluate(obj);

@@ -1,6 +1,6 @@
 {
   "name": "@salzoff/contentexpress",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "",
   "main": "dist/index.js",
   "files": [
@@ -39,6 +39,7 @@
     "express-jsonschema": "^1.1.6",
     "jsonata": "^1.5.4",
     "moment": "^2.22.2",
+    "utf8": "^3.0.0",
     "xml2js": "^0.4.19",
     "xml2js-parser": "^1.1.1"
   },

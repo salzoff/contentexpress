@@ -68,3 +68,5 @@ dist/*
 !dist/.gitkeep
 model
 scripts
+diskcache/*
+!diskcache/logos/.gitkeep

@@ -37,14 +37,16 @@ export default `
         "TourOperatorName": Veranstaltername[0],
         "ProductCode": Objectcode[0],
         "Language": Text[0].lang[0],
-        "Description": Text[0].v,
+        "Description": $exists(Text[0].v)
+            ? Text[0].v
+            :Text[0],
         "CatalogName": Katalogname[0],
         "CatalogId": KatalogID[0],
         "StartDate": datestart[0],
         "EndDate": dateend[0],
         "SeasonType": KatalogSaisonTyp[0],
         "TravelType": TravelType[0].v,
-        "CatalogCode": KatalogCode[0].v,
+        "CatalogCode": KatalogCode[0],
         "CatalogCodes": KatalogCodes.[*].v,
         "CatalogHotelId": KataloghotelID[0],
         "CatalogCover": $exists(catalog_cover) 
