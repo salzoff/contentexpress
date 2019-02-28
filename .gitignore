@@ -63,10 +63,7 @@ typings/
 # IDE
 .idea
 src/config/local.config.js
-config/index.js
 dist/*
 !dist/.gitkeep
-model
-scripts
 diskcache/*
 !diskcache/logos/.gitkeep
