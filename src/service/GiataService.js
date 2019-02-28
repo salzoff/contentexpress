@@ -5,8 +5,7 @@ import { parseStringSync, parseString } from 'xml2js';
 import templates from '../templates/index';
 
 
-axios.defaults.responseType = 'document';
-axios.defaults.responseEncoding = 'ISO-8859-1';
+axios.defaults.responseType = 'arraybuffer';
 let instance;
 export default class GiataService {
     constructor(config) {
@@ -32,7 +31,11 @@ export default class GiataService {
     getList(params) {
         let url = `${this.baseQueryUrl}sc=list&`;
         url += querystring.stringify(params);
-        return axios.get(url)
+        return axios.get(url, {
+            transformResponse: [function (data) {
+                return String.fromCharCode.apply(null, data);
+            }],
+        })
             .then(response => this.getPromisedParserForResponse(response))
             .then((obj, response) => {
                 let parsedResult = templates[`${params.list}List`].evaluate(obj);
@@ -47,7 +50,11 @@ export default class GiataService {
         let url = `${this.baseQueryUrl}sc=search&`;
         url += querystring.stringify(params);
         console.log(url);
-        return axios.get(url)
+        return axios.get(url, {
+            transformResponse: [function (data) {
+                return data.toString('latin1');
+            }],
+        })
             .then(response => this.getPromisedParserForResponse(response))
             .then((obj, response) => {
                 const parsedResult = templates[`hotelList`].evaluate(obj);
@@ -65,8 +72,7 @@ export default class GiataService {
         console.log(url);
         return axios.get(url, {
             transformResponse: [function (data) {
-                // Do whatever you want to transform the data
-                return utf8.encode(data);
+                return data.toString('latin1');
             }],
         })
             .then(response => this.getPromisedParserForResponse(response))

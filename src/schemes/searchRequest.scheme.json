@@ -55,8 +55,11 @@
         },
         "gid": {
             "$id": "#/properties/gid",
-            "type": "integer",
-            "title": "Giata Id"
+            "title": "Giata Id",
+            "anyOf": [
+                { "type": "integer" },
+                { "type": "string" }
+            ]
         },
         "vid": {
             "$id": "#/properties/vid",

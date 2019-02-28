@@ -47,6 +47,13 @@ const doCache = (body, response) => {
 
 const cacheJsonToDiskCache = (key, value) => {
     return new Promise((resolve, reject) => {
+        fs.readdir(cachePath, (err, data) => {
+            data.forEach(entry => {
+                if (path.extname(entry) === '.dat') {
+                    fs.unlink(path.resolve(cachePath, entry), err => {});
+                }
+            });
+        });
         diskCache.set(key, JSON.stringify(value), { ttl }, (err, result) => {
             if(err) {
                 reject(err);

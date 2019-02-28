@@ -19,7 +19,7 @@ const hotelController  = {
 const hotelRouter = express.Router();
 hotelRouter.use(bodyParser.json());
 hotelRouter.use(bodyParser.urlencoded({ extended: true }));
-hotelRouter.use(cacheMiddleware);
+//hotelRouter.use(cacheMiddleware);
 hotelRouter.post('/hotel', validate({body: schema}), (req, res, next) => {
     const body = req.body;
     hotelController.getHotel(body)
