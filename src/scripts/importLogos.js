@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import config from '../config/index';
 import GiataService from '../service/GiataService';
 const giataService = new GiataService(config);

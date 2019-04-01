@@ -15,6 +15,7 @@ export default class LogoStore {
     }
 
     updateCacheUrls(providerList) {
+        console.log('update cache urls');
         cacheJsonToFile('providerList.json', 'logos', providerList)
             .then(() => {
                 this.initLogoCache(providerList);
@@ -25,6 +26,7 @@ export default class LogoStore {
     }
 
     loadCachedUrls() {
+        console.log('load cached urls');
         loadCachedJsonFromFile('providerlist.json', 'logos')
             .then(providerList => {
                 this.initLogoCache(providerList);
@@ -35,6 +37,7 @@ export default class LogoStore {
     }
 
     prepareLogoCache(providerList) {
+        console.log('prepare logo cache');
         providerList.forEach(provider => {
             this.logos[`logo-${provider.Code}-small`] = provider.LogoSmall;
             this.logos[`logo-${provider.Code}-medium`] = provider.LogoMedium;

@@ -1,3 +1,5 @@
+import 'dotenv/config';
+console.log(process.env);
 import express from 'express';
 import router from './routes/index';
 import config from './config';
