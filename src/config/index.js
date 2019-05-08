@@ -5,14 +5,14 @@ const config = {
         giataBaseUrl: 'http://www.giata-xml.de',
         giataUser: process.env.GIATA_USER,
         giataPassword: process.env.GIATA_PASSWORD,
-        port: process.env.NBC_PORT || 7070,
+        port: process.env.PORT || 7070,
         defaultSearchShow: 'gid,hn,hk,sn,si,zn,zi,ln,lc,vc,vn,vid,oc,kn,katid,ks,ps,khid,kst,pics150,pics320,pics800,text,lk,cli,cld,ds,de,cv,vl,tt,ttc,katcode,geo,adr,fact'
     },
     production: {
         giataBaseUrl: 'http://www.giata-xml.de',
         giataUser: process.env.GIATA_USER,
         giataPassword: process.env.GIATA_PASSWORD,
-        port: process.env.NBC_PORT || 7070,
+        port: process.env.PORT || 7070,
         defaultSearchShow: 'gid,hn,hk,sn,si,zn,zi,ln,lc,vc,vn,vid,oc,kn,katid,ks,ps,khid,kst,pics150,pics320,pics800,text,lk,cli,cld,ds,de,cv,vl,tt,ttc,katcode,geo,adr,fact'
     }
 };

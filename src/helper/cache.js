@@ -106,8 +106,6 @@ const cacheLogos = (tourOperatorCode, logos) => {
                 })
                     .then(response => {
                         const buffer = Buffer.from(response.data);
-                        console.log(buffer);
-                        console.log(diskCache);
                         diskCache.set(key, {
                             binary: {
                                 key: buffer
