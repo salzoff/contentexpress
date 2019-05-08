@@ -31,9 +31,11 @@ export default class GiataService {
     getList(params) {
         let url = `${this.baseQueryUrl}sc=list&`;
         url += querystring.stringify(params);
+        console.log(url);
         return axios.get(url, {
             transformResponse: [function (data) {
-                return String.fromCharCode.apply(null, data);
+                console.log(data);
+                return data.toString('latin1');
             }],
         })
             .then(response => this.getPromisedParserForResponse(response))

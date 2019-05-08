@@ -2,7 +2,11 @@
     "presets": [
         [
             "env",
-            "stage-2"
+            {
+                "targets": {
+                    "node": "current"
+                }
+            }
         ]
     ]
 }

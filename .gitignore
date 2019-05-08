@@ -65,5 +65,6 @@ typings/
 src/config/local.config.js
 dist/*
 !dist/.gitkeep
+model
 diskcache/*
 !diskcache/logos/.gitkeep

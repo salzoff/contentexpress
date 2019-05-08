@@ -68,7 +68,8 @@ const cacheJsonToFile = (file, folder, data) => {
     return new Promise((resolve, reject) => {
         fs.writeFile(path.resolve(cachePath, folder, file), JSON.stringify(data), 'utf-8', err => {
             if (err) {
-                reject(`Update of ${file} failed`);
+                console.log(err);
+                reject(`${err} Updatess of ${file} failed`);
                 return false;
             }
             resolve(data)
@@ -76,11 +77,15 @@ const cacheJsonToFile = (file, folder, data) => {
     });
 };
 
-const loadCachedJsonFromFile = (file, folder) => {
+const loadCachedJsonFromFile = (file, folder, defaultContent = '[]') => {
+    console.log('load cached json from file');
+    if (!fs.existsSync(path.resolve(cachePath, folder, file))) {
+        fs.writeFileSync(path.resolve(cachePath, folder, file), defaultContent);
+    }
     return new Promise((resolve, reject) => {
         fs.readFile(path.resolve(cachePath, folder, file), 'utf-8', (err, result) => {
             if (err) {
-                reject(`Update of ${file} failed`);
+                reject(`${err} Update of ${file} failed`);
                 return false;
             }
             resolve(JSON.parse(result));
